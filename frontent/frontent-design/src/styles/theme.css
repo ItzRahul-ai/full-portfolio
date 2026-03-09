@@ -1,0 +1,44 @@
+:root {
+  --color-bg: #05070d;
+  --color-bg-soft: #0f1527;
+  --color-surface: rgba(11, 16, 29, 0.68);
+  --color-text: #f5f8ff;
+  --color-muted: #8d96ad;
+  --color-border: rgba(255, 255, 255, 0.14);
+  --color-accent: #57b8ff;
+  --color-accent-2: #9f7cff;
+  --color-glow: rgba(87, 184, 255, 0.32);
+  --color-gradient-from: #0e1220;
+  --color-gradient-to: #05070d;
+}
+
+body::before,
+body::after {
+  position: fixed;
+  pointer-events: none;
+  content: '';
+  z-index: 0;
+}
+
+body::before {
+  inset: 0;
+  background:
+    radial-gradient(circle at 18% 10%, color-mix(in srgb, var(--color-accent) 20%, transparent), transparent 35%),
+    radial-gradient(circle at 84% 72%, color-mix(in srgb, var(--color-accent-2) 18%, transparent), transparent 40%),
+    linear-gradient(135deg, var(--color-gradient-from), var(--color-gradient-to));
+  opacity: 1;
+}
+
+body::after {
+  inset: 16% 18% auto auto;
+  width: min(42vw, 560px);
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--color-accent) 30%, transparent), transparent 70%);
+  filter: blur(72px);
+  opacity: 0.42;
+}
+
+[data-theme-mode='light'] body::after {
+  opacity: 0.3;
+}
